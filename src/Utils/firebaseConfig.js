@@ -1,12 +1,13 @@
 // firebaseConfig.js
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { FIREBASE_KEY } from "./constants";
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBFC4yJL7ud96QSk1kgt4XJrV2VO5qE9tc", // Your Web API Key
-  authDomain: "news-app-e77cc.firebaseapp.com", // Derived from your project ID
-  projectId: "news-app-e77cc", // Your Project ID
+  apiKey: FIREBASE_KEY, 
+  authDomain: "news-app-e77cc.firebaseapp.com", 
+  projectId: "news-app-e77cc", 
 };
 
 // Initialize Firebase

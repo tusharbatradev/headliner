@@ -1,18 +1,22 @@
 import { Stack, Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { auth } from "../Utils/firebaseConfig"; // Make sure to import your Firebase config
+import { auth } from "../Utils/firebaseConfig";
 import Logo from "../assets/Logo.png";
+import LogOutPopUp from "./LogOutPopUp";
+import { signOut } from "firebase/auth";
 
 const Header = () => {
-  const [userName, setUserName] = useState("");
+  const [openPopUp, setOpenPopUp] = useState(false);
 
-  useEffect(() => {
-    // Fetch the current user details
-    const user = auth.currentUser;
-    if (user) {
-      setUserName(user.displayName || "User");
-    }
-  }, []);
+  const handleLogOut = () => {
+    // Trigger the pop-up to appear
+    setOpenPopUp(true);
+  };
+
+  const handleClosePopUp = () => {
+    // Close the pop-up
+    setOpenPopUp(false);
+  };
 
   return (
     <Stack
@@ -49,6 +53,7 @@ const Header = () => {
         </svg>
       </Box>
       <Box
+        onClick={handleLogOut}
         sx={{
           backgroundColor: "#f2f2f2",
           padding: "10px",
@@ -72,6 +77,12 @@ const Header = () => {
           />
         </svg>
       </Box>
+
+      {/* Pass confirmLogOut to LogOutPopUp */}
+      <LogOutPopUp
+        open={openPopUp}
+        onClose={handleClosePopUp}
+      />
     </Stack>
   );
 };
