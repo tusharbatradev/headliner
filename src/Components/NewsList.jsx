@@ -9,14 +9,14 @@ const NewsList = () => {
   const getNews = async () => {
     const data = await fetch(NEWS_API);
     const json = await data.json();
-    console.log(json);
+    console.log(json)
     setNews(json.results);
   };
 
   useEffect(() => {
     getNews();
-    console.log(news);
-  }, []);
+    console.log(news)
+  }, [])
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "16px" }}>
@@ -28,17 +28,10 @@ const NewsList = () => {
       >
         Recommendation
       </Typography>
-      {news.length === 0 ? (
-        <>
-          <Skeleton sx={{ width: "366px", height: "157px" }} />
-          <Skeleton sx={{ width: "366px", height: "157px" }} />
-          <Skeleton sx={{ width: "366px", height: "157px" }} />
-          <Skeleton sx={{ width: "366px", height: "157px" }} />
-          <Skeleton sx={{ width: "366px", height: "157px" }} />
-        </>
-      ) : (
-        news.map((i) => <NewsCard news={i} />)
-      )}
+      {news.map((i) => (
+        <NewsCard news={i} />
+      ))}
+      
     </Box>
   );
 };

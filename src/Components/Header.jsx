@@ -52,6 +52,12 @@ const Header = () => {
           />
         </svg>
       </Box>
+      <Typography sx={{
+        fontWeight : 800,
+        fontSize : '18px'
+      }}>
+        HEADLINER
+        </Typography>
       <Box
         onClick={handleLogOut}
         sx={{
