@@ -7,7 +7,7 @@ import {
   Button,
 } from "@mui/material";
 
-const LogOutPopUp = ({ open, onClose }) => {
+const LogOutPopUp = ({ open, onClose, handleSignOut }) => {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Are you sure you want to log out?</DialogTitle>
@@ -18,7 +18,7 @@ const LogOutPopUp = ({ open, onClose }) => {
         <Button onClick={onClose} color="primary">
           No
         </Button>
-        <Button color="secondary">
+        <Button onClick={handleSignOut} color="secondary">
           Yes
         </Button>
       </DialogActions>

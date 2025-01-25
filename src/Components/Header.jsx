@@ -4,12 +4,14 @@ import { auth } from "../Utils/firebaseConfig";
 import Logo from "../assets/Logo.png";
 import LogOutPopUp from "./LogOutPopUp";
 import { signOut } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../Utils/userSlice";
 
 const Header = () => {
   const [openPopUp, setOpenPopUp] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleLogOut = () => {
-    // Trigger the pop-up to appear
+  const handlePopUp = () => {
     setOpenPopUp(true);
   };
 
@@ -17,6 +19,10 @@ const Header = () => {
     // Close the pop-up
     setOpenPopUp(false);
   };
+
+  const handleSignOut = () => {
+    dispatch(logoutUser())
+  }
 
   return (
     <Stack
@@ -59,7 +65,7 @@ const Header = () => {
         HEADLINER
         </Typography>
       <Box
-        onClick={handleLogOut}
+        onClick={handlePopUp}
         sx={{
           backgroundColor: "#f2f2f2",
           padding: "10px",
@@ -88,6 +94,7 @@ const Header = () => {
       <LogOutPopUp
         open={openPopUp}
         onClose={handleClosePopUp}
+        handleSignOut={handleSignOut}
       />
     </Stack>
   );
