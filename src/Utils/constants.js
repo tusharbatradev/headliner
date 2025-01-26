@@ -5,3 +5,4 @@ export const NEWS_API =
 
 export const SINGLE_NEWS_API =
   "https://newsdata.io/api/1/latest?apikey=pub_66542332019556b0aa3412b36bfe56b33e8e2&id=";
+

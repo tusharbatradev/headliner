@@ -1,4 +1,4 @@
-import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Skeleton, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { SINGLE_NEWS_API } from "../Utils/constants";
@@ -76,15 +76,32 @@ const MainNews = () => {
         </IconButton>
 
         {/* News Image */}
-        <img
-          src={news.image_url}
-          alt="News"
-          style={{
-            width: "100%",
-            borderRadius: "16px",
-            height: "100%",
-          }}
-        />
+        {news.image_url ? (
+          <img
+            src={news.image_url}
+            alt="News"
+            style={{
+              width: "100%",
+              borderRadius: "16px",
+              height: "100%",
+            }}
+          />
+        ) : (
+          <Box
+            sx={{
+              backgroundColor: "black",
+              width: "100%",
+              height: "250px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography sx={{ fontWeight: 600, color: "white" }}>
+              No Image for this news
+            </Typography>
+          </Box>
+        )}
       </Box>
       {/* Stack for the News Channel Details */}
       <Stack
