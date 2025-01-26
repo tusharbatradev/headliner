@@ -4,6 +4,7 @@ import Logo from "../assets/Logo.png";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { TextField, Button, Typography, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +14,7 @@ import { loginUser, toggleMode } from "../Utils/userSlice";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState(""); // New state for name
   const dispatch = useDispatch();
   const { isUserLogin, isLoginMode } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -20,13 +22,25 @@ const Login = () => {
   const handleAuth = async () => {
     try {
       if (isLoginMode) {
+        // Login functionality
         await signInWithEmailAndPassword(auth, email, password);
         alert("Logged in successfully!");
         dispatch(loginUser()); // Set user as logged in
         navigate("/browse");
       } else {
         // Signup functionality
-        await createUserWithEmailAndPassword(auth, email, password);
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const user = userCredential.user;
+
+        // Update the user's profile with the name
+        await updateProfile(user, {
+          displayName: name,
+        });
+
         alert("Account created successfully!");
         dispatch(toggleMode()); // Switch to login mode after signup
       }
@@ -50,7 +64,7 @@ const Login = () => {
           padding: 2,
           width: "100%",
           maxWidth: 400,
-          borderRadius: 2
+          borderRadius: 2,
         }}
       >
         <Box mb={3}>
@@ -70,6 +84,28 @@ const Login = () => {
             flexDirection: "column",
           }}
         >
+          {!isLoginMode && ( // Show name field only for signup
+            <Box mb={2}>
+              <Typography fontWeight="bold">
+                Name <span style={{ color: "red" }}>*</span>
+              </Typography>
+              <TextField
+                variant="outlined"
+                type="text"
+                placeholder="Your Name"
+                fullWidth
+                margin="normal"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required={!isLoginMode}
+                InputProps={{
+                  style: {
+                    borderRadius: "12px",
+                  },
+                }}
+              />
+            </Box>
+          )}
           <Box mb={2}>
             <Typography fontWeight="bold">
               Email <span style={{ color: "red" }}>*</span>
