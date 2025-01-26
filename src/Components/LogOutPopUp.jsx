@@ -1,24 +1,55 @@
-import React from "react";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Button,
-} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Dialog, DialogActions, DialogTitle, Button, Box } from "@mui/material";
+import { getAuth } from "firebase/auth";
 
 const LogOutPopUp = ({ open, onClose, handleSignOut }) => {
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const auth = getAuth(); // Initialize Firebase Auth
+    const currentUser = auth.currentUser;
+    if (currentUser) {
+      setUsername(currentUser.displayName || "User"); // Fallback to 'User' if displayName isn't available
+    }
+  }, []);
+
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Are you sure you want to log out?</DialogTitle>
-      <DialogContent>
-        {/* Additional content can be added here */}
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={onClose} color="primary">
+      <DialogTitle sx={{ fontWeight: 600, fontSize: "22px" }}>
+        Hey, {username}! <br />
+        Do you want to Log Out?
+      </DialogTitle>
+      {/* Logout Confirmation */}
+      <DialogActions
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <Button
+          sx={{
+            backgroundColor: "black",
+            width: "100px",
+            color: "white",
+            fontWeight: 600,
+            fontSize: "18px",
+          }}
+          onClick={onClose}
+        >
           No
         </Button>
-        <Button onClick={handleSignOut} color="secondary">
+        <Button
+          sx={{
+            backgroundColor: "black",
+            width: "100px",
+            color: "white",
+            fontWeight: 600,
+            fontSize: "18px",
+          }}
+          onClick={handleSignOut}
+          color="secondary"
+        >
           Yes
         </Button>
       </DialogActions>

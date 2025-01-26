@@ -21,8 +21,8 @@ const Header = () => {
   };
 
   const handleSignOut = () => {
-    dispatch(logoutUser())
-  }
+    dispatch(logoutUser());
+  };
 
   return (
     <Stack
@@ -58,12 +58,15 @@ const Header = () => {
           />
         </svg>
       </Box>
-      <Typography sx={{
-        fontWeight : 800,
-        fontSize : '18px'
-      }}>
+      <Typography
+        sx={{
+          fontWeight: 800,
+          fontSize: "18px",
+        }}
+      >
         HEADLINER
-        </Typography>
+      </Typography>
+
       <Box
         onClick={handlePopUp}
         sx={{
@@ -72,6 +75,7 @@ const Header = () => {
           borderRadius: "12px",
         }}
       >
+        {/* User Icon */}
         <svg
           width="26px"
           height="26px"

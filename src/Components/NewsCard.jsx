@@ -1,7 +1,7 @@
 import { Box, Skeleton, Typography } from "@mui/material";
 import React from "react";
 
-const NewsCard = ({ news }) => {
+const NewsCard = ({ news, handleNewsNavigation }) => {
   // Extract the date (without time) from pubDate
   const formattedDate = new Date(news.pubDate).toLocaleDateString();
 
@@ -11,6 +11,7 @@ const NewsCard = ({ news }) => {
 
   return (
     <Box
+      onClick={() => handleNewsNavigation(news.article_id)}
       sx={{
         display: "flex",
         gap: "8px",
