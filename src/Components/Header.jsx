@@ -6,6 +6,7 @@ import LogOutPopUp from "./LogOutPopUp";
 import { signOut } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../Utils/userSlice";
+import { openSideBar } from "../Utils/sideBarSlice";
 
 const Header = () => {
   const [openPopUp, setOpenPopUp] = useState(false);
@@ -35,6 +36,7 @@ const Header = () => {
       }}
     >
       <Box
+        onClick={() => dispatch(openSideBar())}
         sx={{
           backgroundColor: "#f2f2f2",
           padding: "8px",
@@ -52,9 +54,9 @@ const Header = () => {
           <path
             d="M4 6H20M4 12H20M4 18H20"
             stroke="#000000"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </Box>

@@ -39,7 +39,7 @@ const NewsList = () => {
         Recommendation
       </Typography>
       {news.map((i) => (
-        <NewsCard handleNewsNavigation={handleNewsNavigation} news={i} />
+        <NewsCard key={i.article_id} handleNewsNavigation={handleNewsNavigation} news={i} />
       ))}
     </Box>
   );
