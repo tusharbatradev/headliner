@@ -22,6 +22,7 @@ const SideBar = () => {
   };
 
   const handleHomeClick = () => {
+    dispatch(closeSideBar());
     navigate("/browse");
     dispatch(setHomeRoute());
   };
@@ -143,6 +144,7 @@ const SideBar = () => {
           </Typography>
         </Stack>
       </Box>
+
     </Drawer>
   );
 };
