@@ -2,7 +2,12 @@ import { Box, Button, Drawer, Stack, Typography } from "@mui/material";
 import React from "react";
 import Logo from "../assets/Logo.png";
 import { useDispatch, useSelector } from "react-redux";
-import { closeSideBar } from "../Utils/sideBarSlice";
+import {
+  closeSideBar,
+  setAboutRoute,
+  setHomeRoute,
+  setSearchRoute,
+} from "../Utils/sideBarSlice";
 import { useNavigate } from "react-router-dom";
 
 const SideBar = () => {
@@ -11,9 +16,20 @@ const SideBar = () => {
   const navigate = useNavigate();
 
   const handleSearchPageNavigation = () => {
-    dispatch(closeSideBar())
-    navigate('searchnews')
-  }
+    dispatch(closeSideBar());
+    dispatch(setSearchRoute());
+    navigate("searchnews");
+  };
+
+  const handleHomeClick = () => {
+    navigate("/browse");
+    dispatch(setHomeRoute());
+  };
+
+  const handleAboutClick = () => {
+    // navigate("/about");
+    dispatch(setAboutRoute());
+  };
 
   return (
     <Drawer
@@ -36,9 +52,9 @@ const SideBar = () => {
         <Stack direction={"column"} spacing={3} width={"100%"}>
           {/* Home */}
           <Typography
-          onClick={() => navigate("/browse")}
+            onClick={handleHomeClick}
             sx={{
-              backgroundColor: "#eeeeee",
+              backgroundColor: sideBarState.homeRoute ? "#eeeeee" : "white",
               padding: "10px",
               fontWeight: 700,
               borderRadius: "8px",
@@ -66,6 +82,7 @@ const SideBar = () => {
           <Typography
             onClick={handleSearchPageNavigation}
             sx={{
+              backgroundColor: sideBarState.searchRoute ? "#eeeeee" : "white",
               padding: "10px",
               fontWeight: 700,
               borderRadius: "8px",
@@ -94,7 +111,9 @@ const SideBar = () => {
           </Typography>
           {/* About */}
           <Typography
+            onClick={handleAboutClick}
             sx={{
+              backgroundColor: sideBarState.aboutRoute ? "#eeeeee" : "white",
               padding: "10px",
               fontWeight: 700,
               borderRadius: "8px",

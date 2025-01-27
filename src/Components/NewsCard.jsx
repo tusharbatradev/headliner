@@ -20,16 +20,28 @@ const NewsCard = ({ news, handleNewsNavigation }) => {
         borderRadius: "12px",
       }}
     >
-      <img
-        src={news.image_url}
-        style={{
-          width: "160px",
-          minWidth: "160px",
-          height: "125px",
-          minHeight: "125px",
-          borderRadius: "12px",
-        }}
-      />
+      {news.image_url ? (
+        <img
+          src={news.image_url}
+          style={{
+            width: "160px",
+            minWidth: "160px",
+            height: "125px",
+            minHeight: "125px",
+            borderRadius: "12px",
+          }}
+        />
+      ) : (
+        <Box
+          sx={{
+            backgroundColor: "#eeeeee",
+            width: "100%",
+            height: "125px",
+            borderRadius: "12px",
+          }}
+        ></Box>
+      )}
+
       <Box
         sx={{
           height: "125px",

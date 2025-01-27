@@ -45,6 +45,10 @@ const SearchPage = () => {
     }
   };
 
+  const handleNewsNavigation = (article_id) => {
+    navigate(`/browse/mainnews/${article_id}`);
+  };
+
   return (
     <Box
       sx={{
@@ -69,14 +73,22 @@ const SearchPage = () => {
         )}
       />
       {!selectedCategory ? (
-        <Typography>Select A Category</Typography>
+        <Typography sx={{fontWeight : 600, fontSize : '18px'}}>Please select a category</Typography>
       ) : (
-        <Typography>{selectedCategory} News:-</Typography>
+        <Typography sx={{fontWeight : 600, fontSize : '18px'}}>{selectedCategory} News:-</Typography>
       )}
+
+      {/* News Cards */}
       {searchedNews.length === 0 && selectedCategory ? (
         <Loading />
       ) : (
-        searchedNews.map((i) => <NewsCard key={i.article_id} news={i} />)
+        searchedNews.map((i) => (
+          <NewsCard
+            key={i.article_id}
+            news={i}
+            handleNewsNavigation={handleNewsNavigation}
+          />
+        ))
       )}
     </Box>
   );
