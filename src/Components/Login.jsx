@@ -65,6 +65,7 @@ const Login = () => {
           width: "100%",
           maxWidth: 400,
           borderRadius: 2,
+          mt : '-50px'
         }}
       >
         <Box mb={3}>
@@ -84,7 +85,7 @@ const Login = () => {
             flexDirection: "column",
           }}
         >
-          {!isLoginMode && ( // Show name field only for signup
+          {!isLoginMode && (
             <Box mb={2}>
               <Typography fontWeight="bold">
                 Name <span style={{ color: "red" }}>*</span>

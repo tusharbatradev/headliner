@@ -7,6 +7,7 @@ import appStore from "./Utils/appStore";
 import MainNews from "./Components/MainNews";
 import NewsList from "./Components/NewsList";
 import SearchPage from "./Components/SearchPage";
+import AboutPage from "./Components/AboutPage";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -25,10 +26,15 @@ function App() {
         {
           path: "mainnews/:id",
           element: <MainNews />,
-        },{
+        },
+        {
           path: "searchnews",
           element: <SearchPage />,
-        }
+        },
+        {
+          path: "about",
+          element: <AboutPage />,
+        },
       ],
     },
   ]);

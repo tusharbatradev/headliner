@@ -28,7 +28,8 @@ const SideBar = () => {
   };
 
   const handleAboutClick = () => {
-    // navigate("/about");
+    dispatch(closeSideBar())
+    navigate("about");
     dispatch(setAboutRoute());
   };
 
@@ -144,7 +145,6 @@ const SideBar = () => {
           </Typography>
         </Stack>
       </Box>
-
     </Drawer>
   );
 };
