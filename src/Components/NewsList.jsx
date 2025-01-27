@@ -3,6 +3,7 @@ import NewsCard from "./NewsCard";
 import { Box, Skeleton, Typography } from "@mui/material";
 import { NEWS_API } from "../Utils/constants";
 import { useNavigate } from "react-router-dom";
+import Loading from "./Loading";
 
 const NewsList = () => {
   const [news, setNews] = useState([]);
@@ -24,8 +25,8 @@ const NewsList = () => {
     console.log(news);
   }, []);
 
-  if(!news){
-    return <h1>Loading</h1>
+  if (news.length === 0) {
+    return <Loading />;
   }
 
   return (

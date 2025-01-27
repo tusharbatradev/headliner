@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import appStore from "./Utils/appStore";
 import MainNews from "./Components/MainNews";
 import NewsList from "./Components/NewsList";
+import SearchPage from "./Components/SearchPage";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -24,7 +25,10 @@ function App() {
         {
           path: "mainnews/:id",
           element: <MainNews />,
-        },
+        },{
+          path: "searchnews",
+          element: <SearchPage />,
+        }
       ],
     },
   ]);
