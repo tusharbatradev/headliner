@@ -29,7 +29,7 @@ const SideBar = () => {
 
   const handleAboutClick = () => {
     dispatch(closeSideBar())
-    navigate("about");
+    navigate("/browse/about");
     dispatch(setAboutRoute());
   };
 
