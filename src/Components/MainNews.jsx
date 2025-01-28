@@ -67,8 +67,7 @@ const MainNews = () => {
             top: "10px",
             left: "10px",
             zIndex: 10,
-            background: "rgba(255, 255, 255, 0.1)",
-            backdropFilter: "blur(8px)",
+            backgroundColor : '#e3e3e3',
             boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
             "&:hover": {
               background: "rgba(255, 255, 255, 0.2)",
@@ -84,7 +83,7 @@ const MainNews = () => {
           >
             <path
               d="M5 12H19M5 12L11 6M5 12L11 18"
-              stroke="white"
+              stroke="black"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
