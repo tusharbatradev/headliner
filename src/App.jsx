@@ -8,6 +8,7 @@ import MainNews from "./Components/MainNews";
 import NewsList from "./Components/NewsList";
 import SearchPage from "./Components/SearchPage";
 import AboutPage from "./Components/AboutPage";
+import FavNewsPage from "./Components/FavNewsPage";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -35,6 +36,10 @@ function App() {
           path: "about",
           element: <AboutPage />,
         },
+        {
+          path: "favNews",
+          element: <FavNewsPage />,
+        }
       ],
     },
   ]);

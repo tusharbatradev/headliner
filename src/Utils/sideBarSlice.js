@@ -7,6 +7,7 @@ const sideBarSlice = createSlice({
     homeRoute: true,
     searchRoute: false,
     aboutRoute: false,
+    favoriteRoute: false
   },
   reducers: {
     openSideBar: (state) => {
@@ -19,17 +20,26 @@ const sideBarSlice = createSlice({
       state.homeRoute = true;
       state.searchRoute = false;
       state.aboutRoute = false;
+      state.favoriteRoute = false
     },
     setSearchRoute: (state) => {
       state.homeRoute = false;
       state.searchRoute = true;
       state.aboutRoute = false;
+      state.favoriteRoute = false
     },
     setAboutRoute: (state) => {
       state.homeRoute = false;
       state.searchRoute = false;
       state.aboutRoute = true;
+      state.favoriteRoute = false
     },
+    setFavouriteRoute: (state) => {
+      state.homeRoute = false;
+      state.searchRoute = false;
+      state.aboutRoute = false;
+      state.favoriteRoute = true
+    }
   },
 });
 
@@ -39,5 +49,6 @@ export const {
   setHomeRoute,
   setSearchRoute,
   setAboutRoute,
+  setFavouriteRoute
 } = sideBarSlice.actions;
 export default sideBarSlice.reducer;

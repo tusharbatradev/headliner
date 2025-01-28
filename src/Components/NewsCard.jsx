@@ -1,5 +1,7 @@
 import { Box, Skeleton, Typography } from "@mui/material";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFavourites } from "../Utils/newsSlice";
 
 const NewsCard = ({ news, handleNewsNavigation }) => {
   // Extract the date (without time) from pubDate
@@ -7,7 +9,7 @@ const NewsCard = ({ news, handleNewsNavigation }) => {
 
   // Truncate title to 25 characters and append "..." if longer
   const truncatedTitle =
-    news.title.length > 25 ? news.title.slice(0, 35) + "..." : news.title;
+    news?.title?.length > 25 ? news.title.slice(0, 35) + "..." : news.title;
 
   return (
     <Box
@@ -62,7 +64,7 @@ const NewsCard = ({ news, handleNewsNavigation }) => {
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
+            flexDirection: "row",
             justifyContent: "space-between",
           }}
         >

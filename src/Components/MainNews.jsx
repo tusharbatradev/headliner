@@ -46,8 +46,8 @@ const MainNews = () => {
   const news = data.results[0];
 
   const handleSaveNews = () => {
-    dispatch(addFavourites(params));
-    console.log("Saved News:", params);
+    dispatch(addFavourites(data.results));
+    console.log("Saved News:", favNews);
   };
 
   return (
