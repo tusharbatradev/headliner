@@ -100,7 +100,7 @@ const MainNews = () => {
             style={{
               width: "100%",
               borderRadius: "16px",
-              height: "100%",
+              minHeight: "250px",
             }}
           />
         ) : (
@@ -123,7 +123,7 @@ const MainNews = () => {
       <Button
         sx={{
           position: "absolute",
-          top: "220px",
+          top: "250px",
           right: "25px",
           zIndex: 10,
           backgroundColor: "#e3e3e3",
