@@ -35,7 +35,7 @@ const NewsCard = ({ news, handleNewsNavigation }) => {
         <Box
           sx={{
             backgroundColor: "#eeeeee",
-            width: "100%",
+            width: "268px",
             height: "125px",
             borderRadius: "12px",
           }}
