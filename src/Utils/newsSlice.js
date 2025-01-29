@@ -8,7 +8,7 @@ const newsSlice = createSlice({
       state.push(action.payload);
     },
     removeFavourites: (state, action) => {
-      return state.filter((news) => news.id !== action.payload.id);
+      return state = []
     },
   },
 });

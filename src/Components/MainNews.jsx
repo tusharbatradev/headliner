@@ -14,6 +14,7 @@ import { addFavourites } from "../Utils/newsSlice";
 
 const MainNews = () => {
   const [data, setData] = useState(null);
+  const [fav, setFav] = useState(false);
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ const MainNews = () => {
 
   const handleSaveNews = () => {
     dispatch(addFavourites(data.results));
+    setFav(true);
     console.log("Saved News:", favNews);
   };
 
@@ -67,7 +69,7 @@ const MainNews = () => {
             top: "10px",
             left: "10px",
             zIndex: 10,
-            backgroundColor : '#e3e3e3',
+            backgroundColor: "#e3e3e3",
             boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
             "&:hover": {
               background: "rgba(255, 255, 255, 0.2)",
@@ -153,6 +155,7 @@ const MainNews = () => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
+            fill={fav ? "black" : null}
           />
         </svg>
       </Button>
