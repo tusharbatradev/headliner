@@ -22,7 +22,7 @@ const FavNewsPage = () => {
         </Typography>
       ) : (
         <Typography sx={{ fontWeight: 600, fontSize: "20px", pt: "10px" }}>
-          Their is no Favourite News
+          There is no Favourite News
         </Typography>
       )}
 
